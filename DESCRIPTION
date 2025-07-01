@@ -1,22 +1,38 @@
 Package: TFEA.ChIP
 Type: Package
 Title: Analyze Transcription Factor Enrichment
-Version: 1.29.1
-Author: Laura Puente Santamaría, Luis del Peso
-Maintainer: Laura Puente Santamaría <lpsantamaria@iib.uam.es>
-Description: Package to analize transcription factor enrichment in a gene set using data from ChIP-Seq experiments.
-Depends: R (>= 3.5)
+Version: 1.19.2
+Authors@R: c(person("Laura", "PUente", "Santamaria", email = "laura.puentes@estudiante.uam.es", role = c("aut")),
+	     person("Yosra", "Berrouayel", email = "yosraberrouayel@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0768-5933")),
+	     person("Luis", "del Peso", email = "lpeso@iib.uam.es", role = c("aut"), comment = c(ORCID = "0000-0003-4014-5688")))
+Description: Package to analyze transcription factor enrichment in a gene set using data from ChIP-Seq experiments.
+Depends: R (>= 4.5.0)
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: false
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.2
 Imports: GenomicRanges, IRanges, biomaRt, GenomicFeatures, grDevices,
-        dplyr, stats, utils, R.utils, methods, org.Hs.eg.db
-Suggests: knitr, rmarkdown, S4Vectors, plotly, scales, tidyr, ggplot2,
-        DESeq2, BiocGenerics, ggrepel, rcompanion,
-        TxDb.Hsapiens.UCSC.hg19.knownGene, RUnit
+        dplyr, stats, utils, R.utils, methods, org.Hs.eg.db, org.Mm.eg.db
+Suggests: 
+    knitr,
+    rmarkdown,
+    S4Vectors,
+    plotly,
+    scales,
+    tidyr,
+    ggplot2,
+    DESeq2,
+    BiocGenerics,
+    ggrepel,
+    rcompanion,
+    TxDb.Hsapiens.UCSC.hg19.knownGene,
+    RUnit,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 biocViews: Transcription, GeneRegulation, GeneSetEnrichment,
-        Transcriptomics, Sequencing, ChIPSeq, RNASeq, ImmunoOncology
+        Transcriptomics, Sequencing, ChIPSeq, RNASeq, ImmunoOncology, 
+        GeneExpression, ChipOnChip
+URL: https://github.com/LauraPS1/TFEA.ChIP
+BugReports: https://github.com/LauraPS1/TFEA.ChIP/issues
 NeedsCompilation: no
-Packaged: 2019-10-22 06:41:44 UTC; laura
+Config/testthat/edition: 3
