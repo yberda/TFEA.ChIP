@@ -354,9 +354,9 @@ str( TF.gene.binding.db )
 The function, accepts any Genomic Range object that includes a metacolumn with a gene ID (stored in the @elementMetadata@listdata[["gene_id"]] slot of the object) for each genomic segment. For example, asignation of peaks to genes can be done by providing a list of all the genes in the genome:
 
 ```{r eval=TRUE,echo=TRUE}
-library(TxDb.Hsapiens.UCSC.hg19.knownGene)
+library(TxDb.Hsapiens.UCSC.hg38.knownGene)
 data( "gr.list", package="TFEA.ChIP") # Loading example datasets for this function
-txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene
+txdb <- TxDb.Hsapiens.UCSC.hg38.knownGene
 Genes <- genes( txdb )
 TF.gene.binding.db <- makeChIPGeneDB( Genes, gr.list, distanceMargin = 0 )
 str( TF.gene.binding.db )

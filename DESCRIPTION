@@ -17,6 +17,9 @@ Suggests:
     knitr,
     rmarkdown,
     S4Vectors,
+    GenomicRanges,
+    Seqinfo,
+    meta,
     plotly,
     scales,
     tidyr,
@@ -26,6 +29,7 @@ Suggests:
     ggrepel,
     rcompanion,
     TxDb.Hsapiens.UCSC.hg19.knownGene,
+    TxDb.Hsapiens.UCSC.hg38.knownGene,
     RUnit,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
