@@ -17,7 +17,6 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-data(TF_ranking2)
 ```
 
 # Introduction
@@ -194,15 +193,12 @@ Meta-analyses can also be used to summarize results across multiple ChIP experim
 ```{r eval=FALSE, echo=TRUE}
 library(meta)
 TF_ranking2 <- metaanalysis_fx( pval_mat_UP )
-```
-
-```{r eval=TRUE, echo=TRUE}
-head( TF_ranking2[['summary']] )
 
 # Get HIF results
 filter(TF_ranking2$summary,
   TF %in% c("ARNT", "HIF1A", "EPAS1"))
 ```
+![Snapshot of the meta-analysis results for HIF1A, EPAS1 and ARNT.](meta_table.png)
 
 In this analysis, `k` denotes the number of ChIP experiments included. `OR` represents the weighted average Odds Ratio, `OR.SE` is its standard error, and `CI` refers to the corresponding confidence interval. The pooled effect size (OR values) estimated by the meta-analysis integrates all datasets for a given TF, which may dilute effects that are context-dependent. However, a forest plot can be generated to visualize the results of individual experiments alongside the integrated value:
 
