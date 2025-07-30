@@ -8,3 +8,5 @@
     )
     )
 }
+
+utils::globalVariables(c("chip_metadata", "MetaData", "tf.name", "chip.name", "EntrezID", "Accession", "TF", "pval", "pval.adj", "OR", "pval.adj.safe", "rank_score", "log10.adj.pVal", "log2.OR", "highlight", "pointText", "Arg.ES", "ES", "symbol", "Treatment", "Cell", "x", "y", "RES", "arg.ES"))

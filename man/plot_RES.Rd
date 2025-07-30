@@ -48,7 +48,8 @@ a GSEA result, with an additional bar plot showing the log2 fold change
 (LFC) of genes. The RES plot can be filtered by TFs or accession IDs.
 }
 \examples{
-data('GSEA_result', 'log2.FC', package = 'TFEA.ChIP')
+data('GSEA.result', 'log2.FC', package = 'TFEA.ChIP')
+GSEA_result <- GSEA.result
 plot_RES(GSEA_result, log2.FC, 
          TF = c('E2F4', 'E2F1'),
          Accession = c('ENCSR000DYY.E2F4.GM12878', 
