@@ -13,6 +13,7 @@ vignette: >
   %\VignetteIndexEntry{TFEA.ChIP: a tool kit for transcription factor enrichment}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteTangle{true}
 ---
 
 ```{r setup, include=FALSE}
@@ -165,7 +166,7 @@ head(MetaData)
 
 The TFEA.ChIP package provides a function that integrates all key analysis steps into a single command, simplifying the workflow. This streamlined function is particularly helpful when working with complete gene tables, as **it can automatically detect TFs that are expressed in the input dataset and restrict the analysis accordingly.** By default, this filtering step is enabled to avoid testing TFs that are unlikely to be relevant in the given biological context, thereby reducing the multiple testing burden and increasing statistical power. If desired, this behavior can be disabled by setting the `expressed` argument to `FALSE`:
 
-```{r eval=TRUE,echo=TRUE}
+```{r eval=FALSE,echo=TRUE}
 pval_mat_UPe <- analysis_from_table(hypoxia_df, 
  method = 'ora', # Overrepresentation Analysis
  interest_min_LFC = 1, # min LFC
@@ -173,7 +174,6 @@ pval_mat_UPe <- analysis_from_table(hypoxia_df,
  control_min_pval = 0.5, control_max_pval = 1, # control pval limits
  control_min_LFC = -0.25, control_max_LFC = 0.25) # control LFC limits
 
-head( pval_mat_UPe )
 ```
 
 In the analyses described above, each ChIP-seq dataset is treated independently. This approach allows for the identification of specific cell types or experimental conditions where a TF may be active, facilitating biological interpretation in relation to the study samples. Alternatively, the package supports the integration of all ChIP-seq datasets associated with a given TF, irrespective of experimental context. This strategy helps to highlight TFs that show consistent enrichment across conditions. The `rankTFs()` function enables this summarization by applying either a Wilcoxon rank-sum test or a GSEA approach to assess whether the ChIP-seq profiles corresponding to the same TF are collectively enriched or depleted in the ranked results.
@@ -261,16 +261,13 @@ GSEA.result <- GSEA_run( hypoxia_df$Genes, hypoxia_df$log2FoldChange, chip_index
 
 Finally, the package provides a function that integrates all the above steps into a single command. In the current version of the package, only TFs present in the input sorted list of genes (i.e., TFs expressed under the conditions under study) are considered for the analysis. This default behavior can be overridden by setting the parameter `expressed` to `FALSE`:
 
-```{r eval=TRUE,echo=TRUE}
+```{r eval=FALSE,echo=TRUE}
 GSEA.result <- analysis_from_table(hypoxia_df,
                                    TFfilter = c('ARNT', 'HIF1A', 'EPAS1'),
                                    expressed = TRUE,  # Takes only expressed TFs
                                    method = 'gsea') # Gene Set Enrichment Analysis
 ```
 
-```{r eval=TRUE,echo=TRUE}
-head(GSEA.result[["result"]][["Enrichment.table"]])
-```
 
 
 ### Plotting the results

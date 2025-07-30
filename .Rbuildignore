@@ -1,2 +1,6 @@
 ^doc$
 ^Meta$
+^inst/doc$
+^\\.git
+^\\.gitignore
+^vignettes/\\.Rhistory

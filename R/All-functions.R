@@ -3,14 +3,18 @@
 #' @importFrom GenomicRanges GRanges distanceToNearest mcols
 #' @importFrom IRanges IRanges
 #' @importFrom biomaRt select useMart getLDS getBM
-#' @importFrom dplyr '%>%' arrange
+#' @importFrom dplyr '%>%' arrange filter pull
 #' @importFrom grDevices colorRamp
-#' @importFrom stats fisher.test p.adjust
+#' @importFrom stats fisher.test p.adjust na.omit setNames
 #' @importFrom utils data setTxtProgressBar txtProgressBar
 #' @importFrom R.utils withTimeout
 #' @importFrom methods is
 #' @import org.Hs.eg.db
 #' @import org.Mm.eg.db
+#' @importFrom rlang .data
+#' @importFrom grDevices rainbow
+#' @importFrom ExperimentHub ExperimentHub
+
 ################### FUNCTIONS #################
 
 ##### Create a ChIP-Gene data base ####
@@ -803,7 +807,7 @@ contingency_matrix <- function(test_list, control_list = NULL,
   #' @examples
   #' data('Genes.Upreg', package = 'TFEA.ChIP')
   #' cm_list <- contingency_matrix(Genes.Upreg)
-  #' @export
+  #' @export contingency_matrix
 
   
   # Load ChIPDB if not already available
@@ -881,7 +885,7 @@ getCMstats <- function(CM_list, chip_index = get_chip_index()) {
   #' If not provided, the entire internal database is used.
   #' @return A data frame with the ChIP experiment ID, TF, p-value, odds-ratio, 
   #' and other derived statistics.
-  #' @export
+  #' @export getCMstats
   #' @examples
   #' data('Genes.Upreg', package = 'TFEA.ChIP')
   #' CM_list_UP <- contingency_matrix(Genes.Upreg)
@@ -1186,6 +1190,7 @@ GSEA_ESpermutations <- function(gene.list, gene.set, weighted.score.type = 0,
   #' noise scores) corresponding to the genes in the gene list
   #' @param perms Number of permutations
   #' @return Vector of Enrichment Scores for a permutation test.
+  #' @export GSEA_ESpermutations
   #' @examples
   #' GSEA_ESpermutations(gene.list=c('3091','2034','405','55818'),
   #' gene.set=c('2034','112399','405'), perms=10)
@@ -1466,7 +1471,7 @@ plot_ES <- function(GSEA_result, LFC, plot_title = NULL, specialTF = NULL,
   #' the plot to.
   #' @return Plotly object combining scatter plot of enrichment scores and a 
   #' log2(fold change) heatmap.
-  #' @export
+  #' @export plot_ES
   
   # Extract enrichment table from GSEA result
   enrichTab <- if (is.data.frame(GSEA_result)) {
@@ -1575,7 +1580,7 @@ highlight_TF <- function(enrichTab, column, specialTF) {
   #'  in the plot.
   #' @return A list containing the updated highlight column and the color 
   #' mapping for each TF.
-  #' @export
+  #' @export highlight_TF
   
   enrichTab$highlight <- "Other"
   
@@ -1622,7 +1627,8 @@ plot_RES <- function(GSEA_result, LFC, plot_title = NULL, line.colors = NULL,
   #' change (LFC) as a bar plot.
   #' @export plot_RES
   #' @examples
-  #' data('GSEA_result', 'log2.FC', package = 'TFEA.ChIP')
+  #' data('GSEA.result', 'log2.FC', package = 'TFEA.ChIP')
+  #' GSEA_result <- GSEA.result
   #' plot_RES(GSEA_result, log2.FC, 
   #'          TF = c('E2F4', 'E2F1'),
   #'          Accession = c('ENCSR000DYY.E2F4.GM12878', 
@@ -1725,7 +1731,7 @@ metaanalysis_fx <- function(dat) {
   #'   - summary: a data frame of ranked meta-analysis results per TF
   #'   - results: a named list of raw meta-analysis objects from the 
   #'    `meta` package
-  #' @export
+  #' @export metaanalysis_fx
   #' @examples
   #' df <- data.frame(TF = c('A', 'A', 'A', 'B', 'B'),
   #'                  OR = c(1, 1.2, 1.23, 4, 4.5),
@@ -1812,7 +1818,7 @@ filter_expressed_TFs <- function(Table, chip_index, TFfilter = NULL, encodeFilte
   #' @param encodeFilter (Optional) Logical; if TRUE, applies ENCODE filtering 
   #' to ChIP-Seq data.
   #' @return A filtered `chip_index` data frame containing only expressed TFs.
-  #' @export
+  #' @export filter_expressed_TFs
   
   # Load chip_metadata if not already available
   if (!exists("chip_metadata")) {
@@ -1886,7 +1892,7 @@ analysis_from_table <- function(inputData, mode = "h2h",
   #' @param TFfilter Character vector of transcription factors to filter (optional).
   #' @param method Analysis method: 'ora' (overrepresentation) or 'gsea' (gene set enrichment).
   #' @return A matrix with calculated statistics (e.g., p-values, odds ratios).
-  #' @export
+  #' @export analysis_from_table
   #' @examples
   #' data('hypoxia_DESeq',package='TFEA.ChIP')
   #' res <- analysis_from_table(hypoxia_DESeq, interest_min_LFC = 1)
@@ -1912,8 +1918,8 @@ analysis_from_table <- function(inputData, mode = "h2h",
   # Filter TFs
   if (!is.null(TFfilter)) {
     TFfilter <- chip_metadata %>%
-      filter(tf.name %in% TFfilter) %>%
-      pull(chip.name)
+      filter(.data$tf.name %in% TFfilter) %>%
+      pull(.data$chip.name)
   }
   
   # Retrieve chip index based on filters

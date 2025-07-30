@@ -1,30 +1,22 @@
 CHANGES IN VERSION 1.29.2
-------------------------
+-------------------------
 
-## New Features
-- Added a **meta-analysis function** to combine results across datasets.
-- Introduced a new **wrapper function** that performs the full enrichment workflow
-in one step, reducing manual intervention.
+New Features
+- Added a meta-analysis function to combine results across datasets.
+- Introduced a new wrapper function that performs the full enrichment workflow in one step, reducing manual intervention.
 
-## Enhancements
+Enhancements
 - Refactored and optimized several core functions for improved performance.
 - Improved plotting functions for clearer and more customizable visualizations.
 
-## Data Updates
-- Updated the ChIPDB object using newly available regulatory region-to-gene annotations 
-from the ENCODE rE2G method and CREdb, enhancing the biological relevance and accuracy 
-of TF-gene associations.
-- Integrated new datasets from **ReMap**.
+Data Updates
+- Updated the ChIPDB object using newly available regulatory region-to-gene annotations from the ENCODE rE2G method and CREdb, enhancing the biological relevance and accuracy of TF-gene associations.
+- Integrated new datasets from ReMap.
 
-## New default database:
-- The TF-gene database bundled with TFEA.ChIP was built using the ReMap 2022 ChIP-seq 
-collection and regulatory links from the ENCODE rE2G method. Due to memory constraints, 
-the internal database includes only a subset of the 8,000+ available ChIP-seq 
-experiments. Specifically, we selected 926 experiments performed in the ENCODE Project’s
-Common Cell Types, prioritizing broadly representative and high-quality datasets.
+New default database
+- The TF-gene database bundled with TFEA.ChIP was built using the ReMap 2022 ChIP-seq collection and regulatory links from the ENCODE rE2G method. Due to memory constraints, the internal database includes only a subset of the 8,000+ available ChIP-seq experiments. Specifically, we selected 926 experiments performed in the ENCODE Project’s Common Cell Types, prioritizing broadly representative and high-quality datasets.
 
-To download the full database, as well as other ready-to-use databases generated for 
-TFEA.ChIP, visit:
-    https://github.com/yberda/ChIPDBData
-    https://github.com/LauraPS1/TFEA.ChIP_downloads
+To download the full database, as well as other ready-to-use databases generated for TFEA.ChIP, visit:
+https://github.com/yberda/ChIPDBData
+https://github.com/LauraPS1/TFEA.ChIP_downloads
 
