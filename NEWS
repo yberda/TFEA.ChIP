@@ -17,6 +17,6 @@ New default database
 - The TF-gene database bundled with TFEA.ChIP was built using the ReMap 2022 ChIP-seq collection and regulatory links from the ENCODE rE2G method. Due to memory constraints, the internal database includes only a subset of the 8,000+ available ChIP-seq experiments. Specifically, we selected 926 experiments performed in the ENCODE Project’s Common Cell Types, prioritizing broadly representative and high-quality datasets.
 
 To download the full database, as well as other ready-to-use databases generated for TFEA.ChIP, visit:
-https://github.com/yberda/ChIPDBData
-https://github.com/LauraPS1/TFEA.ChIP_downloads
+- <https://github.com/yberda/ChIPDBData>
+- <https://github.com/LauraPS1/TFEA.ChIP_downloads>
 

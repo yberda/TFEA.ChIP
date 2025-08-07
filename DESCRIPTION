@@ -43,7 +43,7 @@ Suggests:
     RColorBrewer,
     RUnit,
     testthat (>= 3.0.0)
-VignetteBuilder: knitr
+VignetteBuilder: knitr, rmarkdown
 biocViews: Transcription, GeneRegulation, GeneSetEnrichment,
         Transcriptomics, Sequencing, ChIPSeq, RNASeq, ImmunoOncology, 
         GeneExpression, ChipOnChip
