@@ -1,23 +1,26 @@
 ---
 title: "TFEA.ChIP: a tool kit for transcription factor enrichment"
-author: "Laura Puente-Santamaria, Yosra Berrouayel, Luis del Peso"
-date: "`r Sys.Date()`"
-output:
-  html_document:
-    theme: flatly      
-    highlight: tango    
-    toc: true             
-    toc_float: true        
-    number_sections: true 
+author:
+- name: Laura Puente-Santamaria
+- name: Yosra Berrouayel
+- name: Luis del Peso
+date: "`r BiocStyle::doc_date()`"
 vignette: >
   %\VignetteIndexEntry{TFEA.ChIP: a tool kit for transcription factor enrichment}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-  %\VignetteTangle{true}
+output:
+  BiocStyle::html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 ```
 
 # Introduction
@@ -85,7 +88,7 @@ After processing the data with the `preprocessInputData()` function, the resulti
 
 By default, TFEA.ChIP uses a reduced internal reference database restricted to ChIP-seq experiments performed in ENCODE tier 1, 2, and 2.5 cell types. **This streamlined database is intentionally minimal to accommodate users with limited computing resources and may not fully capture the diversity of available TF–gene associations.** To perform enrichment analysis using the complete ChIP-seq database, load the curated dataset from `ExperimentHub` and assign it to an object named `ChIPDB` to override the default:
 
-```{r eval=TRUE,echo=TRUE,message=FALSE}
+```{r eval=F,echo=TRUE,message=FALSE}
 library(ExperimentHub)
 eh <- ExperimentHub()
 ChIPDB <- eh[['EH9854']]  # rE2G300d
@@ -93,7 +96,7 @@ ChIPDB <- eh[['EH9854']]  # rE2G300d
 
 The database shown here is derived from ENCODE’s rE2G predictive models ("rE2G300d", see ChIPDBData GitHub repository for details). However, additional ready-to-use databases based on rE2G, GeneHancer, and CREdb are also available. To use one of these alternative databases, select a different entry in the `eh` object:
 
-```{r eval=TRUE}
+```{r eval=F}
 query(eh, "ChIPDBData")
 ```
 
