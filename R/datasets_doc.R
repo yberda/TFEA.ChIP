@@ -187,4 +187,45 @@
 #' @format A data frame of 1060 observations of 6 variables
 "MetaData"
 
+#' Meta-analysis ranking of transcription factors
+#'
+#' Results of a meta-analysis performed across multiple ChIP-seq experiments 
+#' for transcription factors. 
+#' 
+#' The object is a list with two components:
+#' \itemize{
+#'   \item \strong{summary}: A data frame summarizing the meta-analysis results 
+#'   for each TF (one row per TF).
+#'   \item \strong{details}: A list where each element contains the complete 
+#'   meta-analysis output for a given TF.
+#' }
+#'
+#' @docType data
+#' @keywords datasets
+#' @name TF_ranking2
+#' @usage data("TF_ranking2")
+#' @format A list with two elements:
+#' \describe{
+#'   \item{summary}{A data frame with 1236 rows, each corresponding to a TF.}
+#'   \item{details}{A list of 1236 elements, one per TF, containing the 
+#'   full meta-analysis results.}
+#' }
+"TF_ranking2"
 
+
+#' ChIP-seq transcription factor metadata
+#'
+#' Metadata linking ChIP-seq experiments to their corresponding 
+#' transcription factors. Each row provides the annotation of one TF. 
+#'
+#' @docType data
+#' @keywords datasets
+#' @name chip_metadata
+#' @usage data("chip_metadata")
+#' @format A data frame with 1267 rows. Columns include:
+#' \describe{
+#'   \item{chip.name}{The TF name in the ChIP-seq experiment.}
+#'   \item{tf.name}{The HGNC gene symbol of the TF.}
+#'   \item{EntrezID}{Entrez IDs.}
+#' }
+"chip_metadata"

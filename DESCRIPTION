@@ -12,6 +12,7 @@ Suggests:
     rmarkdown,
     BiocStyle,
     S4Vectors,
+    Seqinfo,
     meta,
     plotly,
     scales,
@@ -37,6 +38,8 @@ Depends: R (>= 4.2.0)
 License: Artistic-2.0
 Encoding: UTF-8
 RoxygenNote: 7.3.2
+LazyData: true
+LazyDataCompression: xz
 VignetteBuilder: knitr, BiocStyle
 biocViews: Transcription, GeneRegulation, GeneSetEnrichment,
         Transcriptomics, Sequencing, ChIPSeq, RNASeq, ImmunoOncology, 
