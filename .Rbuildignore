@@ -1,4 +1,3 @@
 ^Meta$
 ^\\.git
 ^\\.gitignore
-^vignettes/\\.Rhistory
